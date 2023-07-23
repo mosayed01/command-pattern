@@ -1,5 +1,4 @@
-package undo.light
-
+package party.light
 
 class Light(private val location: String) {
     var level = 0
