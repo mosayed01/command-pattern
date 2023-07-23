@@ -1,6 +1,6 @@
-package remote.ceilingfan
+package undo.ceilingfan
 
-import remote.ceilingfan.CeilingFan.Speed.*
+import undo.ceilingfan.CeilingFan.Speed.*
 
 class CeilingFan(private val location: String) {
     var speed: Speed = OFF
@@ -25,7 +25,6 @@ class CeilingFan(private val location: String) {
         speed = OFF
         println("$location ceiling fan is off")
     }
-
 
     enum class Speed {
         HIGH,

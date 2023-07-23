@@ -1,8 +1,11 @@
-package remote
+package undo
 
-class RemoteControl(noCommand: NoCommand = NoCommand()) {
+
+class RemoteControlWithUndo(noCommand: NoCommand = NoCommand()) {
     private val onCommands: MutableList<Command> = MutableList(7) { noCommand }
     private val offCommands: MutableList<Command> = MutableList(7) { noCommand }
+    private var undoCommand: Command = noCommand
+
 
     fun setCommand(slot: Int, onCommand: Command, offCommand: Command) {
         onCommands[slot] = onCommand
@@ -11,10 +14,16 @@ class RemoteControl(noCommand: NoCommand = NoCommand()) {
 
     fun onButtonWasPushed(slot: Int) {
         onCommands[slot].execute()
+        undoCommand = onCommands[slot]
     }
 
     fun offButtonWasPushed(slot: Int) {
         offCommands[slot].execute()
+        undoCommand = offCommands[slot]
+    }
+
+    fun undoButtonWasPushed() {
+        undoCommand.undo()
     }
 
     override fun toString(): String {
@@ -24,6 +33,8 @@ class RemoteControl(noCommand: NoCommand = NoCommand()) {
         for (i in onCommands.indices) {
             stringBuff.append("[slot $i] ${onCommands[i].javaClass.name} \t ${offCommands[i].javaClass.name}\n")
         }
+        stringBuff.append("[undo] ${undoCommand.javaClass.name}\n")
         return stringBuff.toString()
     }
 }
+
