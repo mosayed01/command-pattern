@@ -4,7 +4,7 @@ import undo.Command
 
 
 class CeilingFanOffCommand(private val ceilingFan: CeilingFan) : Command {
-    private var prevSpeed = CeilingFan.Speed.OFF
+    private var prevSpeed = ceilingFan.speed
 
     override fun execute() {
         prevSpeed = ceilingFan.speed
