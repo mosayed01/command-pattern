@@ -15,6 +15,7 @@ import remote.stereo.StereoOnWithCDCommand
 
 fun main() {
     val remoteControl = RemoteControl()
+
     val livingRoomLight = Light("Living Room")
     val kitchenLight = Light("Kitchen")
     val ceilingFan = CeilingFan("Living Room")
@@ -42,12 +43,16 @@ fun main() {
 
     remoteControl.onButtonWasPushed(LIVING_ROOM_LIGHT_SLOT)
     remoteControl.offButtonWasPushed(LIVING_ROOM_LIGHT_SLOT)
+
     remoteControl.onButtonWasPushed(KITCHEN_LIGHT_SLOT)
     remoteControl.offButtonWasPushed(KITCHEN_LIGHT_SLOT)
+
     remoteControl.onButtonWasPushed(CEILING_FAN_SLOT)
     remoteControl.offButtonWasPushed(CEILING_FAN_SLOT)
+
     remoteControl.onButtonWasPushed(STEREO_SLOT)
     remoteControl.offButtonWasPushed(STEREO_SLOT)
+
     remoteControl.offButtonWasPushed(GARAGE_DOOR_SLOT)
     remoteControl.offButtonWasPushed(GARAGE_DOOR_SLOT)
 }
